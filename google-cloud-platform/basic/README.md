@@ -1,0 +1,1 @@
+This terraform is example how to provisioning nginx vm on gcp.
