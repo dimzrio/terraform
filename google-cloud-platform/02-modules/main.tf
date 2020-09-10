@@ -17,6 +17,14 @@ provider "google" {
 module "network" {
     source = "./network"
     ip_cidr_range = var.ip_cidr_range
+    network_name = var.network_name
+}
+
+### Firewall ###
+module "firewall" {
+    source = "./firewall"
+    network_name = var.network_name
+    vpc_network = module.network.vpc_network_name
 }
 
 ### Compute ###

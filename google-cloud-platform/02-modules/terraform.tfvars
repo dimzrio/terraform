@@ -10,3 +10,4 @@ image = "centos-7-v20200811"
 
 ### Network ###
 ip_cidr_range = "192.168.7.0/24"
+network_name = "nginx-provisioning"
