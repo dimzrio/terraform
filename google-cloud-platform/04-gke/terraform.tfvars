@@ -2,7 +2,7 @@
 credentials = "/home/rio/Downloads/dimzrio-8563dd31ddda.json"
 project     = "dimzrio"
 region      = "us-central1"
-zone        = "us-central1-" 
+zone        = "us-central1-a" 
 
 ### GKE ###
 cluster_name = "dimzrio-k8s"
