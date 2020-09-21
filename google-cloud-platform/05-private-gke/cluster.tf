@@ -1,12 +1,11 @@
 data "google_container_engine_versions" "version" {
   location        = var.zone
-  version_prefix  = "1.16."
+  version_prefix  = var.version_prefix_master
   project         = var.project
 }
 
 resource "google_container_cluster" "cluster" {
   name     = var.cluster_name
-  # node_version = data.google_container_engine_versions.version.latest_master_version
   min_master_version = data.google_container_engine_versions.version.latest_master_version
   location = var.zone
   network  = var.network

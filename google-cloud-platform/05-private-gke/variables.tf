@@ -27,6 +27,10 @@ variable "resource_labels" {
     default = {}
 }
 
+variable "version_prefix_master" {
+    default = "1.15."
+}
+
 #################
 ### Node Pool ###
 #################
