@@ -1,5 +1,13 @@
+data "google_container_engine_versions" "version" {
+  location        = var.zone
+  version_prefix  = "1.16."
+  project         = var.project
+}
+
 resource "google_container_cluster" "cluster" {
   name     = var.cluster_name
+  # node_version = data.google_container_engine_versions.version.latest_master_version
+  min_master_version = data.google_container_engine_versions.version.latest_master_version
   location = var.zone
   network  = var.network
   subnetwork = var.subnetwork
@@ -33,12 +41,18 @@ resource "google_container_cluster" "cluster" {
 resource "google_container_node_pool" "nodepool" {
   name       = var.cluster_name
   location   = google_container_cluster.cluster.location
+  version    = data.google_container_engine_versions.version.latest_master_version
   cluster    = google_container_cluster.cluster.name
   node_count = var.node_count
 
   autoscaling {
     min_node_count = var.autoscaling_min_node_count
     max_node_count = var.autoscaling_max_node_count
+  }
+
+  management {
+    auto_repair = true
+    auto_upgrade = true
   }
 
   node_config {
