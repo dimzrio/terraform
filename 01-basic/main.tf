@@ -13,7 +13,6 @@ provider "google" {
   region      = "asia-southeast1"
 }
 
-
 ### CREATE VPC NETWORK ###
 resource "google_compute_network" "vpc-network" {
   name = "nginx-instance"
