@@ -13,6 +13,5 @@ resource "google_compute_firewall" "vpc_firewall" {
 
     source_ranges = ["0.0.0.0/0"]
 
-    source_tags = ["nginx"]
-  
+    source_tags = ["nginx"] 
 }
