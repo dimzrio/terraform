@@ -30,7 +30,6 @@ resource "google_container_node_pool" "nodepool" {
     labels          = var.node_pools[count.index].labels
     taint           = var.node_pools[count.index].taint
 
-    service_account = "kubernetes@kitabisa-dev.iam.gserviceaccount.com"
     oauth_scopes    = ["https://www.googleapis.com/auth/cloud-platform"]
 
     workload_metadata_config {
