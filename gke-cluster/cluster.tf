@@ -11,7 +11,6 @@ resource "google_container_cluster" "cluster" {
   remove_default_node_pool  = true
   initial_node_count        = var.initial_node_count
   resource_labels           = var.resource_labels
-  default_max_pods_per_node = "32"
   logging_service           = "logging.googleapis.com/kubernetes"
   monitoring_service        = "monitoring.googleapis.com/kubernetes"
   
