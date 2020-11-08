@@ -19,27 +19,3 @@ resource "google_compute_subnetwork_iam_member" "network_user_role" {
   role       = "roles/compute.networkUser"
   member     = local.network_user[count.index].member
 }
-
-
-
-
-
-// locals {
-//     a = flatten([
-//         for s in var.subnetwork : [
-//             for i in var.iam_member : {
-//                 s = s
-//                 i = i
-//             }
-//         ]
-//     ])
-// }
-
-// resource "google_compute_subnetwork_iam_member" "network_user_role" {
-//   count      = length(local.a)
-//   project    = var.project
-//   region     = var.region
-//   subnetwork = local.a[count.index].s
-//   role       = "roles/compute.networkUser"
-//   member     = local.a[count.index].i
-// }

@@ -5,17 +5,9 @@ variable "iam_network_user" {
     }))
 }
 
-// variable "subnetwork" {
-//     type = list(string)
-// }
-
-// variable "iam_member" {
-//     type = list(string)
-// }
-
 variable "project" {
     type = string
-    default = "kitabisa-infra"
+    default = "dimzrio"
 }
 
 variable "region" {

@@ -7,6 +7,6 @@ terraform {
 }
 
 provider "google" {
-  project     = "kitabisa-infra"
+  project     = "dimzrio"
   region      = "asia-southeast1"
 }
