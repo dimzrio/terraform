@@ -1,5 +1,5 @@
 ### Project ###
-credentials = "/home/rio/Downloads/dimzrio-8563dd31ddda.json"
+credentials = "/Users/dimasriotantowi/Downloads/dimzrio-13327c807a89.json"
 project     = "dimzrio"
 region      = "asia-southeast1"
 zone        = "asia-southeast1-a" 
