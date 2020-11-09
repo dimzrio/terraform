@@ -15,5 +15,4 @@ resource "google_compute_firewall" "firewall" {
 
     source_tags = ["nginx"]
   
-}
-
+} 
