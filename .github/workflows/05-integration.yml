@@ -11,6 +11,9 @@ on:
     paths:
       - 05-integration/**
 
+env:
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
 jobs:
   terraform:
     name: 'terraform'
@@ -21,8 +24,6 @@ jobs:
           
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
-        with:
-          cli_config_credentials_token: ${{ secrets.GOOGLE_CREDENTIALS }}
                 
       - name: Terraform Init
         id: init
