@@ -14,6 +14,5 @@ resource "google_compute_firewall" "firewall" {
     source_ranges = ["0.0.0.0/0"]
 
     source_tags = ["nginx"]
-  
 }
 
