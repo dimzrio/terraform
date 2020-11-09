@@ -28,14 +28,14 @@ jobs:
         id: init
         run: |
           cd 05-integration/
-          terraform init
+          terraform init -var-file=terraform.tfvars
 
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
         run: |
           cd 05-integration/
-          terraform plan -no-color
+          terraform plan -no-color -var-file=terraform.tfvars
         continue-on-error: true
 
       - name: Update Pull Request
@@ -76,4 +76,4 @@ jobs:
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: |
           cd 05-integration/
-          terraform apply -auto-approve
+          terraform apply -auto-approve -var-file=terraform.tfvars
