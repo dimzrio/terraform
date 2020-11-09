@@ -17,8 +17,8 @@ env:
   TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
-  terragrunt:
-    name: 'terragrunt'
+  terraform:
+    name: 'terraform'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,7 +34,9 @@ jobs:
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -no-color
+        run: |
+          cd 05-integration/
+          terraform plan -no-color
         continue-on-error: true
 
       - name: Update Pull Request
@@ -73,4 +75,6 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-        run: terraform apply -auto-approve
+        run: |
+          cd 05-integration/
+          terraform apply -auto-approve
