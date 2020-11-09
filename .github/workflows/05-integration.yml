@@ -29,7 +29,9 @@ jobs:
           
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: |
+          cd 05-integration/
+          terraform init
 
       - name: Terraform Plan
         id: plan
