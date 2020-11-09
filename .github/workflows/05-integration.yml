@@ -40,6 +40,8 @@ jobs:
           cd 05-integration/
           terraform plan -no-color
         continue-on-error: true
+        env:
+          GOOGLE_CREDENTIALS: "${{ secrets.GOOGLE_CREDENTIALS }}"
 
       - name: Update Pull Request
         uses: actions/github-script@v3
