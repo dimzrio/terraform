@@ -22,5 +22,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
                 
-      - name: Get Path update
-        run: cat `echo $GITHUB_EVENT_PATH`
+      - uses: marceloprado/has-changed-path@v1
+        id: changed-front
+        with:
+          paths: packages/front
+
+      - name: Deploy front
+        if: steps.changed-front.outputs.changed == 'true'
+        run: /deploy-front.sh
