@@ -19,13 +19,11 @@ jobs:
     name: 'terraform'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-                
-      - uses: marceloprado/has-changed-path@v1
-        id: changed-front
+      - uses: actions/checkout@v2
         with:
-          paths: packages/front
-
-      - name: Deploy front
-        run: echo steps.changed-front.outputs
+          path: ${{ github.ref }}
+          clean: true
+          lfs: true
+                
+      - name: Print workspace path
+        run: echo $GITHUB_WORKSPACE && pwd && echo ${{github.ref}}
