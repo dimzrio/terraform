@@ -20,11 +20,20 @@ jobs:
       with:
         fetch-depth: 100
 
-    - uses: marceloprado/has-changed-path@master
-      id: testong
-      with:
-        paths: examples/testong
+    # - uses: marceloprado/has-changed-path@master
+    #   id: testong
+    #   with:
+    #     paths: examples/testong
     
-    - name: Deploy front
-      if: steps.testong.outputs.changed == 'true'
-      run: echo "hellow"
+    # - name: Deploy front
+    #   if: steps.testong.outputs.changed == 'true'
+    #   run: echo "hellow"
+
+    - name: check1
+        id: filepath
+        run: |
+          echo ::set-output name=commitpath::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }})
+
+      - name: echo
+        run: |
+          echo ${{ steps.filepath.outputs.commitpath }}
