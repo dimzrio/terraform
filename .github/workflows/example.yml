@@ -1,0 +1,29 @@
+name: example
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - example/**
+
+  pull_request:
+    paths:
+      - example/**
+
+env:
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+jobs:
+  terraform:
+    name: 'terraform'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+          
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+                
+      - name: Get Path update
+        run: echo $GITHUB_EVENT_PATH
