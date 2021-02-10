@@ -1,15 +1,15 @@
-name: example
+name: examples
 
 on:
   push:
     branches:
       - master
     paths:
-      - example/**
+      - examples/**
 
   pull_request:
     paths:
-      - example/**
+      - examples/**
 
 env:
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
