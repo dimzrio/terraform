@@ -21,9 +21,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-          
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
                 
       - name: Get Path update
-        run: echo $GITHUB_EVENT_PATH
+        run: cat `echo $GITHUB_EVENT_PATH`
