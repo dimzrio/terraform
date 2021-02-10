@@ -34,6 +34,6 @@ jobs:
       run: |
           echo ::set-output name=commitpath::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }})
 
-      - name: echo
-        run: |
-          echo ${{ steps.filepath.outputs.commitpath }}
+    - name: echo
+      run: |
+        echo ${{ steps.filepath.outputs.commitpath }}
