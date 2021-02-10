@@ -28,5 +28,4 @@ jobs:
           paths: packages/front
 
       - name: Deploy front
-        if: steps.changed-front.outputs.changed == 'true'
-        run: /deploy-front.sh
+        run: echo steps.changed-front.outputs
