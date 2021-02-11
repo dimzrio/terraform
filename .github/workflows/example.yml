@@ -20,9 +20,13 @@ jobs:
       with:
         fetch-depth: 100
 
-    - name: get path
+    - uses: marceloprado/has-changed-path@master
       id: testong
-      run: echo ::set-output name=path::${{ hashFiles('**/testong/**') }} 
+      with:
+        paths: examples/testong
     
     - name: Deploy front
-      run: echo ${{ steps.testong.outputs.path }}
+      if: steps.testong.outputs.changed == 'true'
+      run: |
+        cd **/testong/**
+        pwd
