@@ -22,7 +22,7 @@ jobs:
 
     - name: get path
       id: testong
-      run: echo ::set-output name=path::${{ hashFiles(" **/testong/**") }}
+      run: echo ::set-output name=path::${{ hashFiles('**/testong/**') }}
     
     - name: Deploy front
       run: echo ${{ steps.testong.outputs.path }}
