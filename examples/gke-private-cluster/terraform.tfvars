@@ -66,5 +66,13 @@ vpc_subnet = [
   }
 ]
 
-
-
+########################
+### BigQuery Dataset ###
+########################
+dataset_id                  = "gke_cluster"
+friendly_name               = "gke"
+description                 = "This is dateset uses for metering resources of gke cluster"
+default_table_expiration_ms = 3600000
+dataset_labels = {
+  env = "gke-usage-metering",
+}

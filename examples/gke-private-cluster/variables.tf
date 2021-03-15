@@ -74,3 +74,12 @@ variable "vpc_subnet" {
         }
     ]
 }
+
+########################
+### BigQuery Dataset ###
+########################
+variable "dataset_id" { default = "" }
+variable "friendly_name" { default = "" }
+variable "description" { default = "" }
+variable "default_table_expiration_ms" { default = null }
+variable "dataset_labels" { default = {} }

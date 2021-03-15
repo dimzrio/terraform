@@ -33,7 +33,7 @@ resource "google_container_cluster" "cluster" {
         "https://www.googleapis.com/auth/servicecontrol"
       ]
 
-      service_account = format("kubernetes@%s.iam.gserviceaccount.com", var.project)
+      // service_account = format("kubernetes@%s.iam.gserviceaccount.com", var.project)
     }
 
     enabled = "true"
@@ -65,9 +65,12 @@ resource "google_container_cluster" "cluster" {
   }
 
   private_cluster_config {
-    enable_private_endpoint = false
+    enable_private_endpoint = true
     master_ipv4_cidr_block  = var.master_ipv4_cidr_block
     enable_private_nodes    = true
+  }
+
+  master_authorized_networks_config {
   }
 
   master_auth {
@@ -84,13 +87,13 @@ resource "google_container_cluster" "cluster" {
   }
 
   resource_usage_export_config {
-    enable_network_egress_metering = false
+    enable_network_egress_metering = true
     enable_resource_consumption_metering = true
 
     bigquery_destination {
-      dataset_id = "gke_cluster"
-    #dataset_id = google_bigquery_dataset.dataset.dataset_id
+      dataset_id = var.dataset_id
   }
 }
 
+depends_on = [google_bigquery_dataset.dataset]
 }

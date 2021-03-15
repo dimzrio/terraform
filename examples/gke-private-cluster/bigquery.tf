@@ -1,21 +1,26 @@
-// resource "google_bigquery_dataset" "dataset" {
-//   dataset_id                  = "gke_cluster"
-//   friendly_name               = "gke"
-//   description                 = "This is dateset uses for metering resources of gke cluster"
-//   location                    = "asia-southeast1"
-//   default_table_expiration_ms = 3600000
+resource "google_bigquery_dataset" "dataset" {
+    dataset_id                  = var.dataset_id
+    friendly_name               = var.friendly_name
+    description                 = var.description
+    location                    = var.region
+    default_table_expiration_ms = var.default_table_expiration_ms
 
-//   labels = {
-//     env = "default"
-//   }
+    labels = var.dataset_labels
 
-//   access {
-//     role          = "OWNER"
-//     user_by_email = "kubernetes@dimzrio.iam.gserviceaccount.com"
-//   }
-  
-// }
+    access {
+        role          = "OWNER"
+        special_group = "projectOwners"
+    }
 
-// resource "google_service_account" "bqowner" {
-//   account_id = "kubernetes"
-// }
+    access {
+        role          = "READER"
+        special_group = "projectReaders"
+    }
+    
+    access {
+        role          = "WRITER"
+        special_group = "projectWriters"
+    }
+
+    timeouts {} 
+}
