@@ -1,20 +1,13 @@
 resource "google_container_node_pool" "nodepool" {
-  count      = length(var.node_pools)
-
-  name       = var.node_pools[count.index].name
+  name       = "dimzrio"
   location   = google_container_cluster.cluster.location
   version    = data.google_container_engine_versions.version.latest_master_version
   cluster    = google_container_cluster.cluster.name
-  node_count = var.node_pools[count.index].node_count
+  node_count = 2
 
   autoscaling {
-    min_node_count = var.node_pools[count.index].min_node_count
-    max_node_count = var.node_pools[count.index].max_node_count
-  }
-
-  upgrade_settings {
-    max_surge       = var.node_pools[count.index].upgrade_max_surge
-    max_unavailable = var.node_pools[count.index].upgrade_max_unavailable
+    min_node_count = 2
+    max_node_count = 4
   }
 
   management {
@@ -23,23 +16,16 @@ resource "google_container_node_pool" "nodepool" {
   }
 
   node_config {
-    preemptible     = var.node_pools[count.index].preemptible
-    disk_size_gb    = var.node_pools[count.index].disk_size_gb
-    disk_type       = var.node_pools[count.index].disk_type
-    machine_type    = var.node_pools[count.index].machine_type
-    labels          = var.node_pools[count.index].labels
-    taint           = var.node_pools[count.index].taint
-    tags            = [ format("fw-%s-nodes", google_container_cluster.cluster.name) ]
-
-    service_account = format("kubernetes@%s.iam.gserviceaccount.com", var.project)
+    disk_size_gb    = 20
+    disk_type       = "pd-standard"
+    machine_type    = "e2-standard-2"
+    labels          = {
+                        "provisioner" = "terraform",
+                        "machine" = "e2-standard-2"
+                      }
     oauth_scopes    = ["https://www.googleapis.com/auth/cloud-platform"]
 
-    workload_metadata_config {
-      node_metadata = "GKE_METADATA_SERVER"
-    }
   }
-
-  
 
   depends_on = [google_container_cluster.cluster]
 }
