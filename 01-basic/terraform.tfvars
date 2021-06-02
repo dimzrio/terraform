@@ -1,4 +1,3 @@
-credentials   = "/Users/dimasriotantowi/Downloads/dimzrio-774c6f829186.json"
 project       = "dimzrio"
 region        = "asia-southeast1"
 name          = "nginx"
