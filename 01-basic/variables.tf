@@ -4,6 +4,5 @@ variable "machine_type" {}
 variable "image" {}
 variable "ip_cidr_range" {}
 variable "ports" {}
-variable "credentials" {}
 variable "project" {}
 variable "region" {}
