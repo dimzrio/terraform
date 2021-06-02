@@ -1,4 +1,4 @@
-project       = "dimzrio"
+project       = "kitabisa-infra"
 region        = "asia-southeast1"
 name          = "nginx"
 zone          = "asia-southeast1-a"
