@@ -1,5 +1,5 @@
 resource "google_compute_instance" "vm" {
-  name         = format("%s-%s", var.vm_name, terraform.workspace)
+  name         = "nginx"
   machine_type = "e2-medium"
   zone         = "asia-southeast2-a"
 
