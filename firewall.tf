@@ -1,12 +1,13 @@
 resource "google_compute_firewall" "fw" {
-  name    = "allow-http"
+  count = length(var.firewall_rules)
+  name    = var.firewall_rules[count.index].name
   network = google_compute_network.vpc_network.name
 
   allow {
-    protocol = "tcp"
-    ports    = ["80"]
+    protocol = var.firewall_rules[count.index].protocol
+    ports    = var.firewall_rules[count.index].ports
   }
 
-  source_tags = ["nginx"]
-  source_ranges = ["0.0.0.0/0"]
+  source_tags = var.firewall_rules[count.index].source_tags
+  source_ranges = var.firewall_rules[count.index].source_ranges
 }

@@ -1,13 +1,13 @@
 resource "google_compute_instance" "vm" {
-  name         = "nginx"
-  machine_type = "e2-medium"
-  zone         = "asia-southeast2-a"
+  name         = var.name
+  machine_type = var.machine_type
+  zone         = var.zone
 
-  tags = ["nginx"]
+  tags = var.tags
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = var.image
     }
   }
 
@@ -19,5 +19,5 @@ resource "google_compute_instance" "vm" {
     }
   }
 
-  metadata_startup_script = "sudo apt -y update; sudo apt -y install nginx;"
+  metadata_startup_script = join("; ", var.metadata_startup_script)
 }
