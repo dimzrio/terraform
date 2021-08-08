@@ -1,7 +1,7 @@
 resource "google_compute_firewall" "fw" {
   count = length(var.firewall_rules)
   name    = var.firewall_rules[count.index].name
-  network = google_compute_network.vpc_network.name
+  network = var.network
 
   allow {
     protocol = var.firewall_rules[count.index].protocol

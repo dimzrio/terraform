@@ -32,14 +32,17 @@ variable "metadata_startup_script" {
 
 variable "network" {
     type = string
+    default = "default"
 }
 
 variable "subnetwork" {
     type = string
+    default = null
 }
 
 variable "ip_cidr_range" {
     type = string
+    default = null
 }
 
 variable "firewall_rules" {

@@ -14,9 +14,9 @@ metadata_startup_script = [
 ]
 
 # Network
-network = "dimzrio-network"
-subnetwork = "dimzrio-subnet"
-ip_cidr_range = "192.168.7.0/24"
+// network = "dimzrio-network"
+// subnetwork = "dimzrio-subnet"
+// ip_cidr_range = "192.168.7.0/24"
 
 # Firewall
 firewall_rules = [
