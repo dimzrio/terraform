@@ -18,7 +18,7 @@ module "subnet" {
     subnets = [
         {
             subnet_name           = "dimzrio-k8s-subnet-1"
-            subnet_ip             = "10.201.4.0/22"
+            subnet_ip             = "192.168.7.0/26"
             subnet_region         = "asia-southeast1"
         }
     ]
@@ -27,11 +27,11 @@ module "subnet" {
         dimzrio-k8s-subnet-1 = [
             {
                 range_name    = "pods-address"
-                ip_cidr_range = "10.101.0.0/16"
+                ip_cidr_range = "10.7.0.0/20"
             },
             {
                 range_name    = "services-address"
-                ip_cidr_range = "10.201.2.0/23"
+                ip_cidr_range = "10.7.16.0/23"
             }
         ]
     }

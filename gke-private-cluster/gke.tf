@@ -62,3 +62,6 @@ module "gke" {
     module.subnet
   ]
 }
+
+// Deploy Nginx
+// https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
