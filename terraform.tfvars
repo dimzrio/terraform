@@ -1,5 +1,5 @@
 # Provider
-project     = "dimzrio"
+project     = "kitabisa-infra"
 region      = "asia-southeast2"
 zone        = "asia-southeast2-a"
 
@@ -14,21 +14,21 @@ metadata_startup_script = [
 ]
 
 # Network
-// network = "dimzrio-network"
-// subnetwork = "dimzrio-subnet"
-// ip_cidr_range = "192.168.7.0/24"
+network = "dimzrio-network"
+subnetwork = "dimzrio-subnet"
+ip_cidr_range = "192.168.7.0/24"
 
 # Firewall
 firewall_rules = [
     {
-        name = "allow-http"
+        name = "dimzrio-allow-http"
         protocol = "tcp"
         ports = ["80"]
         source_tags = ["nginx"]
         source_ranges = ["0.0.0.0/0"]
     },
     {
-        name = "allow-ping"
+        name = "dimzrio-allow-ping"
         protocol = "icmp"
         ports = []
         source_tags = ["nginx"]
