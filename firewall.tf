@@ -10,4 +10,6 @@ resource "google_compute_firewall" "fw" {
 
   source_tags = var.firewall_rules[count.index].source_tags
   source_ranges = var.firewall_rules[count.index].source_ranges
+
+  depends_on    = [google_compute_network.vpc_network]
 }
